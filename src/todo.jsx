@@ -16,7 +16,10 @@ export default function Todo() {
         const newTodos = todos.map((todo,idx)=>{
             if(idx === index){
                 return {...todo, isDone: true};
-            };
+            }
+            else{
+                return{...todo, isDone: todo.isDone}
+            }
         });
         setTodos(newTodos);
     }
