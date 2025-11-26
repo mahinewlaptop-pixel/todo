@@ -4,7 +4,9 @@ export default function Todo() {
     const [todos, setTodos] = useState([]);
     const [input, setInput] = useState("");
     function handleInput(event){
-        setInput(event.target.value);
+        if(event.target.value){
+            setInput(event.target.value);
+        }
     }
 
     function handleDelete(index){
@@ -35,8 +37,15 @@ export default function Todo() {
         />
         <button
         onClick={()=>{
-            setTodos([...todos, {text: input, isDone: false, id: uuidv4()}]);
-            setInput("");
+            if(input === "") {
+                alert("Please enter a todo");
+                return;
+            }
+            else{
+                setTodos([...todos, {text: input, isDone: false, id: uuidv4()}]);
+                setInput("");
+            }
+            
         }}
         className="bg-blue-500 text-white p-2 m-2"
         >
